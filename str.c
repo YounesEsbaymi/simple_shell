@@ -3,7 +3,7 @@
 char *_strdup(const char *str)
 {
 	size_t len;
-	char *new_str:
+	char *new_str;
 
 	if (str == NULL)
 	{

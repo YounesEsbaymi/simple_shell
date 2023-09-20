@@ -10,8 +10,3 @@ void print_message(void)
 	printf("I think this code is sufficient for this task\n");
 }
 
-int main(void)
-{
-	print_message();
-	return (0);
-}

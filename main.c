@@ -6,38 +6,43 @@
  *
  * Return: The exit status of the shell program.
  */
-
 int main(int ac, char **av)
 {
-	char *line = NULL;
-	char **command = NULL;
-	int status = 0;
-	(void)ac;
-	for (;;)
-	{
-		if (isatty(STDIN_FILENO))
-		{
-			write(STDOUT_FILENO, "$ ", 2);
-		}
-		line = _read();
-		if (line == NULL)
-		{
-			if (isatty(STDIN_FILENO))
-			{
-				write(STDOUT_FILENO, "\n", 1);
-			}
-			return (status);
-		}
+    char *line = NULL;
+    char **command = NULL;
+    int status = 0;
+    int i = 0;
 
-		command = splitLine(line);
-		if (!command)
-		{
-			free(line);
-			continue;
-		}
+    (void)ac;
 
-		status = _execute(command, av);
+    while (1)
+    {
+        if (isatty(STDIN_FILENO))
+        {
+            write(STDOUT_FILENO, "$ ", 2);
+        }
+        line = _read();
+        if (line == NULL)
+        {
+            if (isatty(STDIN_FILENO))
+            {
+                write(STDOUT_FILENO, "\n", 1);
+            }
+            break;
+        }
+        i++;
 
-		free(line);
-	}
+        command = splitLine(line);
+        if (!command)
+        {
+            free(line);
+            continue;
+        }
+
+        status = _execute(command, av, i);
+
+        free(line);
+    }
+    return (status);
+
 }
