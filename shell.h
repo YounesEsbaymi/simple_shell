@@ -41,7 +41,8 @@ void printError(char *shell, char *cmd, int i);
 char *convert_and_reverse(int n);
 
 char *_strtok(char *str, const char *delimiter);
-int execute_builtin(char **command, char **prev_dir);
 void print_env();
+int is_builtin(char *command);
+int execute_builtin(char **command);
 
 #endif
