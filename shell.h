@@ -11,6 +11,7 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <stdarg.h>
+#include <limits.h>
 
 #define MAX_TOKENS 100
 extern char **environ;
@@ -38,5 +39,9 @@ int my_itoa(char *str, int num);
 int _snprintf(char *str, size_t size, const char *format, ...);
 void printError(char *shell, char *cmd, int i);
 char *convert_and_reverse(int n);
+
+char *_strtok(char *str, const char *delimiter);
+int execute_builtin(char **command, char **prev_dir);
+void print_env();
 
 #endif

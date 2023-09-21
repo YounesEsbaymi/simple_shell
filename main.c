@@ -12,6 +12,7 @@ int main(int ac, char **av)
     char **command = NULL;
     int status = 0;
     int i = 0;
+    int result;
 
     (void)ac;
 
@@ -38,7 +39,15 @@ int main(int ac, char **av)
             free(line);
             continue;
         }
-
+	result = execute_builtin(command, &prev_dir);
+	if (result == 1)
+        {
+            break;
+        }
+        else if (result == 2)
+        {
+            print_env();
+        }
         status = _execute(command, av, i);
 
         free(line);

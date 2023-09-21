@@ -21,7 +21,7 @@ char **splitLine(char *line)
 		return (NULL);
 	}
 
-	token = strtok(line, " \t\n");
+	token = _strtok(line, " \t\n");
 	while (token != NULL)
 	{
 		command[i] = _strdup(token);
@@ -45,7 +45,7 @@ char **splitLine(char *line)
 			}
 		}
 
-		token = strtok(NULL, " \t\n");
+		token = _strtok(NULL, " \t\n");
 	}
 	command[i] = NULL;
 	return (command);
