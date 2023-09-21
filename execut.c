@@ -1,4 +1,12 @@
 #include "shell.h"
+/**
+ * _execute - Execute a command.
+ * @command: An array of command and its arguments.
+ * @av: The array of command-line arguments (argv).
+ * @i: The command number in the shell's history.
+ *
+ * Return: The exit status of the executed command.
+ */
 
 int _execute(char **command, char **av, int i)
 {
@@ -36,5 +44,5 @@ int _execute(char **command, char **av, int i)
 		free(cmd);
 	}
 
-	return WEXITSTATUS(satus);
+	return (WEXITSTATUS(satus));
 }

@@ -1,6 +1,11 @@
 #include "shell.h"
 
-
+/**
+ * _getenv - Get the value of an environment variable.
+ * @name: The name of the environment variable.
+ *
+ * Return: The value of the environment variable if found, otherwise NULL.
+ */
 char *_getenv(const char *name)
 {
 	const char *env_str;
@@ -27,7 +32,12 @@ char *_getenv(const char *name)
 
 	return (NULL);
 }
-
+/**
+ * _getpath - Get the full path of a command.
+ * @command: The command to find the full path for.
+ *
+ * Return: The full path of the command if found, otherwise NULL.
+ */
 char *_getpath(const char *command)
 {
 	const char *path;
@@ -69,7 +79,7 @@ char *_getpath(const char *command)
 	{
 		return (NULL);
 	}
-	token = strtok(path_copy, ":");
+	token = _strtok(path_copy, ":");
 	while (token)
 	{
 		_snprintf(cmd_path, sizeof(cmd_path), "%s/%s", token, command);
@@ -77,9 +87,9 @@ char *_getpath(const char *command)
 		if (stat(cmd_path, &st) == 0)
 		{
 			free(path_copy);
-			return _strdup(cmd_path);
+			return (_strdup(cmd_path));
 		}
-		token = strtok(NULL, ":");
+		token = _strtok(NULL, ":");
 	}
 	free(path_copy);
 	return NULL;
