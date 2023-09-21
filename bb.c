@@ -9,8 +9,7 @@
  */
 int execute_builtin(char **command, char **prev_dir)
 {
-    char *home_dir;
-    char cwd[1024];
+    char *home_dir, cwd[PATH_MAX];
     int status = 0;
 
     if (command[0] == NULL)

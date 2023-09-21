@@ -1,11 +1,5 @@
 #include "shell.h"
-/**
- * my_itoa - Convert an integer to a string.
- * @str: The destination string to store the result.
- * @num: The integer to convert.
- *
- * Return: The number of digits in the converted integer.
- */
+
 void print_env() 
 {
     extern char **__environ;

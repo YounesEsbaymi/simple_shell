@@ -9,32 +9,32 @@
  */
 char *_strtok(char *str, const char *delimiter)
 {
-	static char *nextToken;
-	char *tokenStart;
-	char *tokenEnd;
+    static char *nextToken = NULL;
+    char *tokenStart;
+    char *tokenEnd;
 
-	nextToken = NULL;
-	if (str != NULL)
-	{
-		nextToken = str;
-	}
+    if (str != NULL)
+    {
+        nextToken = str;
+    }
 
-	if (nextToken == NULL || *nextToken == '\0')
-	{
-		return (NULL);
-	}
+    if (nextToken == NULL || *nextToken == '\0')
+    {
+        return NULL;
+    }
 
-	tokenStart = nextToken;
-	tokenEnd = strpbrk(nextToken, delimiter);
-	if (tokenEnd != NULL)
-	{
-		*tokenEnd = '\0';
-		nextToken = tokenEnd + 1;
-	}
-	else
-	{
-		nextToken = NULL;
-	}
-	return (tokenStart);
+    tokenStart = nextToken;
+    tokenEnd = strpbrk(nextToken, delimiter);
+
+    if (tokenEnd != NULL)
+    {
+        *tokenEnd = '\0';
+        nextToken = tokenEnd + 1;
+    }
+    else
+    {
+        nextToken = NULL;
+    }
+
+    return tokenStart;
 }
-
