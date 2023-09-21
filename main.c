@@ -13,6 +13,7 @@ int main(int ac, char **av)
     int status = 0;
     int i = 0;
     int result;
+    char *prev_dir = NULL;
 
     (void)ac;
 
